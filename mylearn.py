@@ -67,7 +67,7 @@ def mpp(Tr, yTr, Te, cases, P):
     return y    
 
 
-def knn(Tr, yTr, Te, k):
+def knn(Tr, yTr, Te, k, output=True):
     """
     k-Nearest Neighbor (kNN): Supervised non-parametric learning
     
@@ -88,7 +88,7 @@ def knn(Tr, yTr, Te, k):
         for c in range(classn):
             knn_count[c] = np.sum(knn_label == c)
         y[i] = np.argmax(knn_count)
-        if i % 100 == 0:
+        if i % 100 == 0 and output:
             print(f"Sample {i}: label is {y[i]}")
         
     return y    
