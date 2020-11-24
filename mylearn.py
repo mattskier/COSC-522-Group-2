@@ -9,7 +9,7 @@
 import numpy as np
 import util
 
-def mpp(Tr, yTr, Te, cases, P):
+def mpp(Tr, yTr, Te, cases, P, output=True):
     """
     Maximum Posterior Probability (MPP):
     Supervised parametric learning assuming Gaussian pdf
@@ -61,7 +61,7 @@ def mpp(Tr, yTr, Te, cases, P):
                 print("Can only handle case numbers 1, 2, 3.")
                 sys.exit(1)
         y[i] = disc.argmax()
-        if i % 100 == 0:
+        if i % 100 == 0 and output:
             print(f"Sample {i}: label is {y[i]}")
             
     return y    
