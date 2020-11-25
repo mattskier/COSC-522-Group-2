@@ -18,8 +18,13 @@ def mah2(x, y, Sigma):
     assert x.shape == y.shape and max(x.shape) == max(Sigma.shape)
     
     diff = x - y
-    
-    return np.dot(np.dot(diff, np.linalg.inv(Sigma)), diff)
+
+    try:
+        mah2 = np.dot(np.dot(diff, np.linalg.inv(Sigma)), diff)
+    except:
+        mah2 = np.dot(np.dot(diff, np.linalg.pinv(Sigma)), diff)
+
+    return mah2
 
 
 def gaussian(x, y, Sigma):
